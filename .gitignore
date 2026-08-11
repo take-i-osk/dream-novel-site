@@ -1,3 +1,10 @@
 .DS_Store
 .idea/
 .venv/
+node_modules/
+.pnpm-store/
+.next/
+.next-stale/
+out/
+tsconfig.tsbuildinfo
+tsconfig.typecheck.tsbuildinfo

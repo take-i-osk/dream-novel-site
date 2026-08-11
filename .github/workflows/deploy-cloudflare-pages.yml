@@ -17,16 +17,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Prepare static assets
-        run: |
-          mkdir -p dist
-          rsync -av --delete \
-            --exclude='.git' \
-            --exclude='.github' \
-            --exclude='.idea' \
-            --exclude='dist' \
-            --exclude='test.md' \
-            ./ dist/
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.20.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24.16.0"
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
 
       - name: Deploy
         uses: cloudflare/wrangler-action@v3

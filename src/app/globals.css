@@ -107,7 +107,7 @@ select {
   background:
     linear-gradient(90deg, rgba(6, 3, 20, 0.92), rgba(6, 3, 20, 0.52) 46%, rgba(6, 3, 20, 0.18)),
     linear-gradient(0deg, rgba(13, 6, 32, 1), rgba(13, 6, 32, 0) 34%),
-    url("assets/hero-otaku-room.png") center / cover no-repeat;
+    url("/assets/hero-otaku-room.png") center / cover no-repeat;
 }
 
 .hero-inner {
@@ -205,20 +205,35 @@ button:hover {
 }
 
 .ad-slot {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: center;
+  justify-content: center;
   place-items: center;
-  min-height: 120px;
-  border: 1px dashed rgba(255, 225, 92, 0.58);
-  border-radius: 8px;
-  background: rgba(23, 16, 43, 0.72);
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   color: var(--muted);
   font-size: 0.9rem;
 }
 
+.ad-slot a {
+  display: block;
+  max-width: 100%;
+  line-height: 0;
+}
+
+.ad-slot a img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 .hero-ad {
-  min-height: 140px;
-  background: rgba(23, 16, 43, 0.78);
-  backdrop-filter: blur(18px);
+  background: transparent;
 }
 
 .content-section,
@@ -306,8 +321,8 @@ button:hover {
 
 .name-settings {
   display: grid;
-  gap: 14px;
-  padding: 16px;
+  gap: 28px;
+  padding: 36px 24px;
   border: 1px solid rgba(255, 63, 212, 0.32);
   border-radius: 8px;
   background: rgba(23, 16, 43, 0.78);
@@ -334,9 +349,17 @@ button:hover {
   font-weight: 700;
 }
 
-.name-fields {
+.name-fields,
+.name-grid {
   display: grid;
   gap: 12px;
+}
+
+.name-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px 14px;
+  width: min(100%, 860px);
+  margin: 0 auto;
 }
 
 .name-field-row {
@@ -350,21 +373,44 @@ button:hover {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto auto;
 }
 
-.name-fields label {
+.name-fields label,
+.name-grid label {
   display: grid;
-  gap: 6px;
+  gap: 8px;
   min-width: 0;
   color: var(--muted);
   font-size: 0.84rem;
   font-weight: 700;
 }
 
-.name-fields button {
+.name-settings input[type="text"] {
+  min-height: 52px;
+  padding: 10px 14px;
+  border-radius: 10px;
+}
+
+.name-grid .wide {
+  grid-column: 1 / -1;
+}
+
+.name-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  width: min(100%, 860px);
+  margin: 0 auto;
+  padding-top: 8px;
+}
+
+.name-fields button,
+.name-actions button {
   min-width: 72px;
+  min-height: 44px;
   padding: 0 14px;
 }
 
-.name-fields button[type="submit"] {
+.name-fields button[type="submit"],
+.name-actions button[type="submit"] {
   background: linear-gradient(135deg, var(--pink), var(--accent));
   border-color: rgba(255, 255, 255, 0.2);
   color: #090318;
@@ -485,6 +531,7 @@ button:hover {
   display: grid;
   gap: 12px;
   padding: 20px;
+  color: inherit;
   transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
 }
 
@@ -492,6 +539,43 @@ button:hover {
   border-color: rgba(255, 63, 212, 0.72);
   box-shadow: 0 16px 40px rgba(255, 63, 212, 0.16);
   transform: translateY(-1px);
+}
+
+.novel-card h3 {
+  margin: 8px 0;
+  color: var(--text);
+  font-size: 1.15rem;
+}
+
+.novel-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.novel-status {
+  display: inline-flex;
+  width: max-content;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 10px;
+  border: 1px solid rgba(255, 225, 92, 0.42);
+  border-radius: 999px;
+  color: var(--yellow);
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.novel-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.novel-tags span {
+  color: var(--accent);
+  font-size: 0.86rem;
+  font-weight: 700;
 }
 
 .novel-meta {
@@ -504,16 +588,9 @@ button:hover {
 
 .novel-title {
   margin: 0;
+  color: var(--text);
   font-size: 1.28rem;
   line-height: 1.35;
-}
-
-.novel-title a {
-  color: var(--text);
-}
-
-.novel-title a:hover {
-  color: var(--yellow);
 }
 
 .novel-summary {
@@ -545,13 +622,14 @@ button:hover {
 
 .bottom-ad-section {
   margin-bottom: 64px;
-  padding: 14px;
-  background: rgba(23, 16, 43, 0.72);
-  backdrop-filter: blur(18px);
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  border: 0;
 }
 
 .bottom-ad-slot {
-  min-height: 180px;
+  min-height: 0;
 }
 
 .page-ad-section {
@@ -560,9 +638,8 @@ button:hover {
 }
 
 .page-ad-slot {
-  min-height: 140px;
-  background: rgba(23, 16, 43, 0.72);
-  backdrop-filter: blur(18px);
+  min-height: 0;
+  background: transparent;
 }
 
 .site-footer {
@@ -604,8 +681,15 @@ button:hover {
 }
 
 .novel-document h1 {
+  margin-top: 14px;
   margin-bottom: 18px;
   font-size: clamp(2rem, 5vw, 3.4rem);
+}
+
+.novel-document .novel-status {
+  min-height: 30px;
+  padding: 0 12px;
+  font-size: 0.92rem;
 }
 
 .novel-document p {
@@ -721,7 +805,8 @@ code {
     max-width: none;
   }
 
-  .name-fields {
+  .name-fields,
+  .name-grid {
     grid-template-columns: 1fr;
   }
 
@@ -744,7 +829,12 @@ code {
     flex-direction: column;
   }
 
-  .name-fields button {
+  .name-actions {
+    flex-direction: column;
+  }
+
+  .name-fields button,
+  .name-actions button {
     width: 100%;
   }
 

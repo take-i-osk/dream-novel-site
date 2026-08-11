@@ -1,0 +1,39 @@
+version: "3"
+
+tasks:
+  install:
+    desc: Install dependencies with pnpm
+    cmds:
+      - pnpm install
+
+  setup:
+    desc: Alias for install
+    cmds:
+      - task: install
+
+  dev:
+    desc: Start the Next.js development server
+    cmds:
+      - pnpm dev
+
+  build:
+    desc: Build the application
+    cmds:
+      - pnpm build
+
+  lint:
+    desc: Run ESLint
+    cmds:
+      - pnpm lint
+
+  typecheck:
+    desc: Run TypeScript type checking
+    cmds:
+      - pnpm typecheck
+
+  check:
+    desc: Run the project's default checks
+    cmds:
+      - task: lint
+      - task: typecheck
+      - task: build

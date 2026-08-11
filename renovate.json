@@ -1,0 +1,30 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "timezone": "Asia/Tokyo",
+  "prHourlyLimit": 0,
+  "baseBranchPatterns": ["main"],
+  "enabledManagers": ["npm"],
+  "includePaths": ["package.json", "pnpm-lock.yaml"],
+  "labels": ["renovate", "dependencies"],
+  "assignees": ["take-i-osk"],
+  "reviewers": ["take-i-osk"],
+  "dependencyDashboard": true,
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 9am on monday"]
+  },
+  "major": {
+    "enabled": false
+  },
+  "packageRules": [
+    {
+      "description": "frontend devDependencies をまとめる",
+      "matchManagers": ["npm"],
+      "matchFileNames": ["package.json", "pnpm-lock.yaml"],
+      "matchDepTypes": ["devDependencies"],
+      "groupName": "frontend devDependencies"
+    }
+  ],
+  "ignoreDeps": ["node", "pnpm"]
+}
