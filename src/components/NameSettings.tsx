@@ -6,10 +6,29 @@ import { useReaderStore } from "@/store/reader-store";
 
 export function NameSettings() {
   const storedProfile = useReaderStore((state) => state.profile);
+  const hasHydrated = useReaderStore((state) => state.hasHydrated);
   const setProfile = useReaderStore((state) => state.setProfile);
   const clearProfile = useReaderStore((state) => state.clearProfile);
+
+  return (
+    <NameSettingsForm
+      key={hasHydrated ? "hydrated" : "initial"}
+      initialProfile={hasHydrated ? storedProfile : emptyProfile}
+      setProfile={setProfile}
+      clearProfile={clearProfile}
+    />
+  );
+}
+
+type NameSettingsFormProps = {
+  initialProfile: ReaderProfile;
+  setProfile: (profile: ReaderProfile) => void;
+  clearProfile: () => void;
+};
+
+function NameSettingsForm({ initialProfile, setProfile, clearProfile }: NameSettingsFormProps) {
   const [message, setMessage] = useState("");
-  const [profile, setDraftProfile] = useState<ReaderProfile>(storedProfile);
+  const [profile, setDraftProfile] = useState<ReaderProfile>(initialProfile);
 
   function updateField(field: keyof ReaderProfile, value: string) {
     setDraftProfile((current) => ({ ...current, [field]: value }));

@@ -5,8 +5,9 @@ import { useReaderStore } from "@/store/reader-store";
 
 export function ResumeReading() {
   const lastReadNovel = useReaderStore((state) => state.lastReadNovel);
+  const hasHydrated = useReaderStore((state) => state.hasHydrated);
 
-  if (!lastReadNovel) {
+  if (!hasHydrated || !lastReadNovel) {
     return null;
   }
 

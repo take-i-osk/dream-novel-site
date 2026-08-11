@@ -13,9 +13,11 @@ export type LastReadNovel = {
 type ReaderStore = {
   profile: ReaderProfile;
   lastReadNovel: LastReadNovel | null;
+  hasHydrated: boolean;
   setProfile: (profile: ReaderProfile) => void;
   clearProfile: () => void;
   setLastReadNovel: (novel: LastReadNovel) => void;
+  setHasHydrated: (hasHydrated: boolean) => void;
 };
 
 export const useReaderStore = create<ReaderStore>()(
@@ -23,12 +25,19 @@ export const useReaderStore = create<ReaderStore>()(
     (set) => ({
       profile: emptyProfile,
       lastReadNovel: null,
+      hasHydrated: false,
       setProfile: (profile) => set({ profile }),
       clearProfile: () => set({ profile: emptyProfile }),
       setLastReadNovel: (lastReadNovel) => set({ lastReadNovel }),
+      setHasHydrated: (hasHydrated) => set({ hasHydrated }),
     }),
     {
       name: "ore-no-yume:reader",
+      partialize: (state) => ({
+        profile: state.profile,
+        lastReadNovel: state.lastReadNovel,
+      }),
+      skipHydration: true,
     },
   ),
 );
