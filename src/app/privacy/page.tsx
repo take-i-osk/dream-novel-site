@@ -30,7 +30,7 @@ export default function PrivacyPage() {
 
         <section>
           <h2>アクセス解析について</h2>
-          <p>当サイトでは、今後アクセス解析ツールを利用する場合があります。取得した情報は、サイト改善のための参考として利用します。</p>
+          <p>当サイトでは、アクセス解析ツールとしてGoogle Analyticsを利用しています。取得した情報は、サイト改善のための参考として利用します。</p>
         </section>
 
         <section>

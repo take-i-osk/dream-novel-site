@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { ReaderStoreHydrator } from "@/components/ReaderStoreHydrator";
 import "./globals.css";
 
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body suppressHydrationWarning>
         <ReaderStoreHydrator />
         {children}
+        <GoogleAnalytics />
       </body>
     </html>
   );
