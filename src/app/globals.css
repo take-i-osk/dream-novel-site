@@ -680,10 +680,28 @@ button:hover {
   box-shadow: 0 18px 48px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
+.legal-document {
+  width: min(860px, calc(100% - 36px));
+  margin: 42px auto 72px;
+  padding: clamp(24px, 4vw, 44px);
+  border: 1px solid rgba(255, 63, 212, 0.22);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(0, 217, 255, 0.08), transparent 34%),
+    linear-gradient(180deg, #1b1230 0%, #151022 100%);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
 .novel-document h1 {
   margin-top: 14px;
   margin-bottom: 18px;
   font-size: clamp(2rem, 5vw, 3.4rem);
+}
+
+.legal-document h1 {
+  margin-top: 14px;
+  margin-bottom: 28px;
+  font-size: clamp(1.75rem, 4vw, 2.6rem);
 }
 
 .novel-document .novel-status {
@@ -692,8 +710,30 @@ button:hover {
   font-size: 0.92rem;
 }
 
+.legal-document section {
+  display: grid;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.legal-document h2 {
+  font-size: 1.28rem;
+}
+
 .novel-document p {
   color: #ded4f3;
+}
+
+.legal-document p {
+  margin: 0;
+  color: #ded4f3;
+}
+
+.legal-document a {
+  color: var(--yellow);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
 }
 
 .work-detail {
