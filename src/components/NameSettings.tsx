@@ -39,7 +39,7 @@ function NameSettingsForm({ initialProfile, setProfile, clearProfile }: NameSett
     const nextProfile = trimProfile(profile);
     setDraftProfile(nextProfile);
     setProfile(nextProfile);
-    setMessage("保存しました");
+    setMessage("保存できました！");
   }
 
   function clear() {
@@ -54,7 +54,9 @@ function NameSettingsForm({ initialProfile, setProfile, clearProfile }: NameSett
         <div>
           <h2>名前設定</h2>
         </div>
-        <p>{message || "未入力の項目は、名無し権兵衛・東京で表示されます。"}</p>
+        <p className={message ? "name-settings-message is-success" : "name-settings-message"} role="status" aria-live="polite">
+          {message || "未入力の項目は、名無し権兵衛・東京で表示されます。"}
+        </p>
       </div>
       <div className="name-grid">
         <label>
