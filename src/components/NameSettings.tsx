@@ -27,7 +27,7 @@ type NameSettingsFormProps = {
 };
 
 function NameSettingsForm({ initialProfile, setProfile, clearProfile }: NameSettingsFormProps) {
-  const [message, setMessage] = useState("");
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [profile, setDraftProfile] = useState<ReaderProfile>(initialProfile);
 
   function updateField(field: keyof ReaderProfile, value: string) {
@@ -39,13 +39,12 @@ function NameSettingsForm({ initialProfile, setProfile, clearProfile }: NameSett
     const nextProfile = trimProfile(profile);
     setDraftProfile(nextProfile);
     setProfile(nextProfile);
-    setMessage("保存できました！");
+    setIsDialogOpen(true);
   }
 
   function clear() {
     setDraftProfile(emptyProfile);
     clearProfile();
-    setMessage("削除しました");
   }
 
   return (
@@ -54,9 +53,7 @@ function NameSettingsForm({ initialProfile, setProfile, clearProfile }: NameSett
         <div>
           <h2>名前設定</h2>
         </div>
-        <p className={message ? "name-settings-message is-success" : "name-settings-message"} role="status" aria-live="polite">
-          {message || "未入力の項目は、名無し権兵衛・東京で表示されます。"}
-        </p>
+        <p>未入力の項目は、名無し権兵衛・東京で表示されます。</p>
       </div>
       <div className="name-grid">
         <label>
@@ -94,6 +91,17 @@ function NameSettingsForm({ initialProfile, setProfile, clearProfile }: NameSett
           削除
         </button>
       </div>
+      {isDialogOpen ? (
+        <div className="dialog-backdrop" role="presentation">
+          <div className="save-dialog" role="dialog" aria-modal="true" aria-labelledby="save-dialog-title">
+            <h3 id="save-dialog-title">保存しました！</h3>
+            <p>名前設定を保存しました。</p>
+            <button type="button" onClick={() => setIsDialogOpen(false)} autoFocus>
+              OK
+            </button>
+          </div>
+        </div>
+      ) : null}
     </form>
   );
 }
