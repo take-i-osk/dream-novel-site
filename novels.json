@@ -1,0 +1,22 @@
+[
+  {
+    "title": "恋姫夢想",
+    "summary": "後漢末期に似た異世界へ落ちた青年が、郭嘉、程昱、趙雲たちと漢中で自衛の旗を掲げる夢小説。",
+    "tags": ["恋姫夢想"],
+    "episodes": [
+      {
+        "title": "第一章　天から落ちた男",
+        "updatedAt": "2026-08-11",
+        "url": "novels/koihime/chapter-1/"
+      },
+      {
+        "title": "第二章　五斗米道の影",
+        "updatedAt": "2026-08-11",
+        "url": "novels/koihime/chapter-2/"
+      }
+    ],
+    "status": "連載中",
+    "updatedAt": "2026-08-11",
+    "url": "novels/koihime/"
+  }
+]

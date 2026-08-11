@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="推し活・ゲーム・オタク趣味の夢小説をタイトル、タグで探せるサイトです。">
+    <title>俺の夢</title>
+    <link rel="icon" href="icon.ico" sizes="any">
+    <link rel="preload" href="assets/hero-otaku-room.png" as="image">
+    <link rel="preload" href="assets/logo-transparent.png" as="image">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="俺の夢 トップ">
+        <img class="brand-logo" src="assets/logo-transparent.png" alt="俺の夢">
+      </a>
+      <nav class="site-nav" aria-label="主要ナビゲーション">
+        <span class="reader-greeting" id="readerGreeting">&#12371;&#12435;&#12395;&#12385;&#12399;&#12289;&#21517;&#28961;&#12375;&#12373;&#12435;</span>
+        <a href="#novels">作品一覧</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="小説検索">
+        <div class="hero-inner">
+          <div class="hero-topline">
+            <aside class="ad-slot hero-ad" aria-label="広告">広告枠</aside>
+          </div>
+
+          <section class="author-message" aria-label="作者からのメッセージ">
+            <p>こういう夢小説サイト、最近あまり見かけない気がしたので、趣味でそっと作っています。</p>
+          </section>
+
+          <section class="resume-reading" id="resumeReading" aria-labelledby="resume-reading-title" hidden>
+            <div>
+              <p class="eyebrow">Continue</p>
+              <h2 id="resume-reading-title">前回の途中から読む</h2>
+              <p class="resume-meta" id="resumeReadingMeta"></p>
+            </div>
+            <a class="resume-link" id="resumeReadingLink" href="#">続きを読む</a>
+          </section>
+
+          <form class="name-settings" id="nameSettings" aria-label="名前設定">
+            <div class="name-settings-heading">
+              <h2>名前設定</h2>
+              <p id="nameSettingsStatus" aria-live="polite">未設定</p>
+            </div>
+            <div class="name-fields">
+              <div class="name-field-row">
+                <label>
+                  <span>姓</span>
+                  <input id="readerLastName" type="text" autocomplete="family-name" placeholder="例: 夢野">
+                </label>
+                <label>
+                  <span>名</span>
+                  <input id="readerFirstName" type="text" autocomplete="given-name" placeholder="例: ひかり">
+                </label>
+              </div>
+              <div class="name-field-row">
+                <label>
+                  <span>せい</span>
+                  <input id="readerLastNameKana" type="text" autocomplete="off" placeholder="例: ゆめの">
+                </label>
+                <label>
+                  <span>めい</span>
+                  <input id="readerFirstNameKana" type="text" autocomplete="off" placeholder="例: ひかり">
+                </label>
+              </div>
+              <div class="name-field-row name-field-actions">
+                <label>
+                  <span>あだな</span>
+                  <input id="readerNickname" type="text" autocomplete="off" placeholder="例: ひかり">
+                </label>
+              </div>
+              <div class="name-field-row name-field-actions">
+                <label>
+                  <span>出身地</span>
+                  <input id="readerHometown" type="text" autocomplete="address-level1" placeholder="例: 大阪">
+                </label>
+                <label>
+                  <span>出身地よみ</span>
+                  <input id="readerHometownKana" type="text" autocomplete="off" placeholder="例: おおさか">
+                </label>
+                <button type="submit">保存</button>
+                <button type="button" id="clearNameSettings">削除</button>
+              </div>
+            </div>
+          </form>
+
+          <section class="content-section hero-content" id="novels" aria-labelledby="novels-title">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Quest board</p>
+                <h2 id="novels-title">作品一覧</h2>
+              </div>
+              <p class="result-count" id="resultCount" aria-live="polite">読み込み中</p>
+            </div>
+            <div class="filter-layout">
+              <aside class="filters" id="tags" aria-labelledby="tags-title">
+                <div class="filter-header">
+                  <h2 id="tags-title">タグ</h2>
+                  <button type="button" id="resetFilters">解除</button>
+                </div>
+                <div class="tag-list" id="tagList"></div>
+              </aside>
+
+              <div class="novel-area">
+                <div class="toolbar">
+                  <label for="sortSelect">並び順</label>
+                  <select id="sortSelect">
+                    <option value="updatedDesc">更新が新しい順</option>
+                    <option value="titleAsc">タイトル順</option>
+                    <option value="chapterDesc">話数が多い順</option>
+                  </select>
+                </div>
+                <div class="novel-list" id="novelList"></div>
+                <p class="empty-message" id="emptyMessage" hidden>条件に合う作品がありません。</p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="bottom-ad-section" id="bottom-ad" aria-label="広告">
+        <div class="ad-slot bottom-ad-slot">広告枠</div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <a href="https://github.com/take-i-osk/dream-novel-site" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <small>&copy; 2026 俺の夢</small>
+    </footer>
+  </body>
+</html>
